@@ -17,8 +17,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRoute);
-app.use("/restaurant",auth, restRoute);
-app.use("/order",auth, orderRoute);
+app.use("/restaurant", restRoute);
+app.use("/order", orderRoute);
 
 app.listen(process.env.port, async () => {
     try {
