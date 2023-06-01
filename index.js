@@ -6,6 +6,8 @@ const { userRoute } = require("./routes/user.route");
 
 const { restRoute } = require("./routes/restaurant.route");
 
+const {auth}=require("./middlewares/authenticate")
+
 const {orderRoute}=require("./routes/order.route")
 const app = express();
 app.use(express.json());
@@ -15,8 +17,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRoute);
-app.use("/restaurant", restRoute);
-app.use("/order", orderRoute);
+app.use("/restaurant",auth, restRoute);
+app.use("/order",auth, orderRoute);
 
 app.listen(process.env.port, async () => {
     try {
